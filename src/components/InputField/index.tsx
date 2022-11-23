@@ -4,15 +4,25 @@ import "./styles.css";
 interface Props {
   todo: string;
   setTodo: React.Dispatch<React.SetStateAction<string>>;
-  handleAdd: () => void;
+  handleAdd: (e: React.FormEvent) => void;
 }
 
 const InputField = ({todo, setTodo, handleAdd}:Props) => {
   return (
     <div className='inputField__container'>
-        <form className="input__form">
-          <input value={todo} onChange={(e)=> setTodo(e.target.value) } className='input__box' type="input" placeholder='Enter a new task' />
-          <button className='input__submit' type="button">Add</button>
+        <form className="input__form" onSubmit={handleAdd}>
+          <input
+            type="input"
+            value={todo}
+            onChange={(e)=> setTodo(e.target.value) }
+            placeholder='Enter a new task'
+            className='input__box'
+          />
+          <button
+            className='input__submit'
+            type="submit">
+              Add
+          </button>
         </form>
     </div>
   )
