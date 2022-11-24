@@ -29,6 +29,13 @@ const App: React.FC = () => {
         setTodo={setTodo}
         handleAdd={handleAdd}
       />
+      {
+        todos?.map((t) =>
+          <ul>
+            <li>{t.todo}</li>
+          </ul>
+        )
+      }
     </div>
   )
 }
